@@ -35,6 +35,9 @@ void spi_slave_init()
 ISR (SPI_STC_vect)
 {
   char c = SPDR;  // read SPI Data Register
+
+  SPDR = c;   // write back to SPI, it will be transfed to the master next time
+
   if (spi_buf_index >= sizeof(spi_buf)) {
     spi_buf_index = 0;
   }

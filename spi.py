@@ -78,5 +78,9 @@ class SPI():
 if __name__ == '__main__':
     dev = SPI()
     while True:
-        dev.write('hello\n')
+       response = dev.write('hello\n')
+        print([ chr(c) for c in response ])
+        time.sleep(1)
+        response = dev.write('world\n')
+        print([ c for c in response ])
         time.sleep(1)
